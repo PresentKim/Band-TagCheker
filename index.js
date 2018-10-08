@@ -6,7 +6,6 @@ const CREATE_COMMENT = `${BASE_PATH}post/comment/create`;
 const REMOVE_COMMENT_WARNING = `${BASE_PATH}post/comment/remove`;
 
 /** Load libraries */
-const https = require('https');
 const querystring = require('querystring');
 const fs = require('fs');
 const Utils = require('./Utils');
