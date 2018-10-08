@@ -44,12 +44,12 @@ function readPosts(band_key) {
 			access_token: config.ACCESS_TOKEN,
 			band_key
 		})}`
-	}, (code, items) => {
+	}, (code, data) => {
 		if (code === 1) { //When result_code is '1'
 			if (config.VIOLATIONS[band_key] === undefined) {
 				config.VIOLATIONS[band_key] = {};
 			}
-			items.forEach(
+			data.items.forEach(
 				item => {
 					let post_key = item.post_key;
 					let hash = Utils.createHash(item.content);
@@ -82,7 +82,7 @@ function readPosts(band_key) {
 				}
 			);
 		} else {
-			console.error('error', data);
+			console.log(data);
 		}
 	});
 }
@@ -97,13 +97,13 @@ function createComment(band_key, post_key, body) {
 			post_key,
 			body
 		})}`
-	}, (code, items) => {
+	}, (code, data) => {
 		if (code !== 1) { //When failure
 			//Retry request
 			createComment(band_key, post_key, body);
 
 			if (code !== 1003) { //Ignore Cool down time restriction
-				console.log({code, items});
+				console.log(data);
 			}
 		}
 	});
@@ -119,13 +119,13 @@ function removeComment(band_key, post_key, comment_key) {
 			post_key,
 			comment_key
 		})}`
-	}, (code, items) => {
+	}, (code, data) => {
 		if (code !== 1) { //When failure
 			//Retry request
 			removeComment(band_key, post_key, comment_key);
 
 			if (code !== 1003) { //Ignore Cool down time restriction
-				console.log({code, items});
+				console.log(data);
 			}
 		}
 	});
@@ -139,9 +139,9 @@ function removeComments(band_key, post_key, callback = null) {
 			band_key,
 			post_key
 		})}`
-	}, (code, items) => {
+	}, (code, data) => {
 		if (code === 1) { //When success
-			items.forEach(
+			data.items.forEach(
 				item => {
 					if (item.comment_key !== undefined && (
 						item.content.indexOf(config.COMMENT.WARNING.PREFIX) === 0 //When comment starts with COMMENT.WARNING.PREFIX
@@ -159,6 +159,10 @@ function removeComments(band_key, post_key, callback = null) {
 		} else {
 			//Retry request
 			removeComments(band_key, post_key, callback);
+
+			if (code !== 1003) { //Ignore Cool down time restriction
+				console.log(data);
+			}
 		}
 	});
 }

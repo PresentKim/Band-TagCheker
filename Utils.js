@@ -22,7 +22,7 @@ function httpGet(options, callback) {
 		response.on('data', chunk => data += chunk.toString());
 		response.on('end', () => {
 			let json = JSON.parse(data);
-			callback(json.result_code, json.result_data.items);
+			callback(json.result_code, json.result_data);
 		});
 	});
 }
