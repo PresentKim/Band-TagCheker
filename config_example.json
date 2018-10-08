@@ -1,0 +1,25 @@
+{
+	"ACCESS_TOKEN": "ACCESS_TOKEN",
+	"ACCESS_DELAY": 60,
+	"BAND_KEYS": [
+		"BAND_KEY1",
+		"BAND_KEY2",
+		"BAND_KEY3"
+	],
+	"TAGS": [
+		"TAG1",
+		"TAG2",
+		"TAG3"
+	],
+	"COMMENT" : {
+		"WARNING":{
+			"PREFIX" : "👿 Is illegalized!",
+			"CONTENT" : "No tag created\nRead the rules and fill out the tags"
+		},
+		"THANKS":{
+			"PREFIX" : "👼 Is legalited!",
+			"CONTENT" : "Tag created"
+		}
+	},
+	"VIOLATIONS": {}
+}
