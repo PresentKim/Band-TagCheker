@@ -1,0 +1,23 @@
+{
+  "name": "band-tagcheker",
+  "version": "1.0.0",
+  "description": "NaverBand - Check tag of Posts\u001b[D\u001b[D\u001b[D\u001b[p\u001b[F",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PresentKim/Band-TagCheker.git"
+  },
+  "keywords": [
+    "naver",
+    "band"
+  ],
+  "author": "PresentKim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PresentKim/Band-TagCheker/issues"
+  },
+  "homepage": "https://github.com/PresentKim/Band-TagCheker#readme"
+}
