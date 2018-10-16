@@ -60,6 +60,7 @@ function readPosts(band_key) {
 						) {
 							removeComments(band_key, post_key, () => createComment(band_key, post_key, `${config.COMMENT.THANKS.PREFIX}\n${config.COMMENT.THANKS.CONTENT}`));
 						}
+						delete config.VIOLATIONS[band_key][post_key];
 					} else {
 						if (
 							config.VIOLATIONS[band_key][post_key] === undefined //Have never warning
